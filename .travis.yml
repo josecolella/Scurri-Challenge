@@ -5,4 +5,4 @@ python:
   - "3.7-dev" # 3.7 development branch
   - "nightly" # currently points to 3.7-dev
 # command to run tests
-script: python tests.py
+script: python tests.py -v
