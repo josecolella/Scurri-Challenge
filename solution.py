@@ -85,7 +85,7 @@ def fizz_buzz(beginning_number: int = 1, ending_number: int = 100, key: int=None
     clean_result_tuple = lambda result_tuple: result_tuple[0] if result_tuple[1] is '' else result_tuple[1]
     result_list = (clean_result_tuple(trans_tuple)
                    for trans_tuple in transformed_result_list)
-    if key:
+    if key is not None:
         result_list = itertools.islice(result_list, key - 1, key)
 
     return result_list

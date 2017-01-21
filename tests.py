@@ -47,31 +47,45 @@ class TestFizzBuzz(unittest.TestCase):
         with self.assertRaises(Exception):
             solution.fizz_buzz(-1, -100)
 
+    def test_output_wrong_type_for_key_raises_exception(self):
+        with self.assertRaises(TypeError):
+            solution.fizz_buzz(1, 100, 'hello')
+
+    def test_exception_raised_when_key_not_present(self):
+        with self.assertRaises(ValueError):
+            result = solution.fizz_buzz(1, 100, 0)
+            next(result)
+
     def test_output_3_returns_three(self):
         index = 3
-        results = solution.fizz_buzz(self.default_beginning_index, self.default_ending_index, index)
+        results = solution.fizz_buzz(
+            self.default_beginning_index, self.default_ending_index, index)
         self.assertEqual(next(results), 'Three')
 
     def test_output_95_returns_five(self):
         index = 95
-        results = solution.fizz_buzz(self.default_beginning_index, self.default_ending_index, index)
+        results = solution.fizz_buzz(
+            self.default_beginning_index, self.default_ending_index, index)
         self.assertEqual(next(results), 'Five')
 
     def test_output_90_returns_threefive(self):
         index = 90
-        results = solution.fizz_buzz(self.default_beginning_index, self.default_ending_index, index)
+        results = solution.fizz_buzz(
+            self.default_beginning_index, self.default_ending_index, index)
         self.assertEqual(next(results), 'ThreeFive')
 
     def test_output_16_returns_number(self):
         index = 16
         expected_result = 16
-        results = solution.fizz_buzz(self.default_beginning_index, self.default_ending_index, index)
+        results = solution.fizz_buzz(
+            self.default_beginning_index, self.default_ending_index, index)
         self.assertEqual(next(results), expected_result)
 
     def test_output_30_returns_threefive_string(self):
         index = 30
         expected_result = 'ThreeFive'
-        results = solution.fizz_buzz(self.default_beginning_index, self.default_ending_index, index)
+        results = solution.fizz_buzz(
+            self.default_beginning_index, self.default_ending_index, index)
         self.assertEqual(next(results), expected_result)
 
     def test_output_fizz_buzz_from_one_to_hundred(self):
@@ -96,7 +110,8 @@ class TestFizzBuzz(unittest.TestCase):
 
     def test_output_length_fizz_buzz_from_one_to_hundred(self):
         expected_result = 100
-        results = solution.fizz_buzz(self.default_beginning_index, self.default_ending_index)
+        results = solution.fizz_buzz(
+            self.default_beginning_index, self.default_ending_index)
         self.assertEqual(len(list(results)), expected_result)
 
     def test_output_135_returns_threefive_string(self):
@@ -116,6 +131,18 @@ class TestFizzBuzz(unittest.TestCase):
         index = 7368
         results = solution.fizz_buzz(self.default_beginning_index, 8000, index)
         self.assertEqual(next(results), expected_result)
+
+    def test_output_148140_not_returns_five_string(self):
+        error_result = 'Three'
+        index = 148140
+        results = solution.fizz_buzz(1, 200000, index)
+        self.assertNotEqual(next(results), error_result)
+
+    def test_output_6_not_returns_integer_type(self):
+        index = 6
+        results = solution.fizz_buzz(key=index)
+        self.assertNotEqual(type(next(results)), int)
+
 
 if __name__ == '__main__':
     unittest.main()
