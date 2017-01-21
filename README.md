@@ -47,18 +47,18 @@ For the resolution of this question, I wanted to show my own version of solving 
 Here is an illustration of the solution that I have implemented in Python.
 Here are the steps to the solution:
 
-1. Start from a set that contains the range of numbers from 1 to 100
-2. Create four different subsets [Filter]
-    a. A set that contains only numbers that are divisible by both 5 and 3 *Set MultipleBoth*
-    b. A set that contains only numbers that are divisible by 3 and not included in the previous set *Set MultipleThree*
-    c. A set that contains only numbers that are divisble by 5 and not included in the previous two sets *Set MultipleFive*
-    d. A remaining set which is the set difference between the set with all numbers and the previous three sets *Set Remaining*
-3. Map a function for each of these sets to create tuple pair (int, str) with the conditions placed
-    a. For *Set MultipleBoth* the set is **{(15,'ThreeFive'),...}**
-    b. For *Set MultipleThree* the set is **{(3,'Three'),...}**
-    c. For *Set MultipleFive* the set is **{(5, 'Five'),...}**
-    d. For *Set Remaining* the set is **{(1, ''), ...}**
-4. These sets are joined and sorted on the int parameter.
-5. The result is cleaned so that only integers and string are left in the data structure.
+- Start from a set that contains the range of numbers from 1 to 100
+- Create four different subsets [Filter]
+    - A set that contains only numbers that are divisible by both 5 and 3 **Set MultipleBoth**
+    - A set that contains only numbers that are divisible by 3 and not included in the previous set **Set MultipleThree**
+    - A set that contains only numbers that are divisble by 5 and not included in the previous two sets **Set MultipleFive**
+    - A remaining set which is the set difference between the set with all numbers and the previous three sets **Set Remaining**
+- Map a function for each of these sets to create tuple pair (int, str) with the conditions placed
+    - For **Set MultipleBoth** the set is *{(15,'ThreeFive'),...}*
+    - For **Set MultipleThree** the set is *{(3,'Three'),...}*
+    - For **Set MultipleFive** the set is *{(5, 'Five'),...}*
+    - For **Set Remaining** the set is *{(1, ''), ...}*
+- These sets are joined and sorted on the int parameter.
+- The result is cleaned so that only integers and string are left in the data structure.
 
 ![Solution Image](https://cl.ly/1q3c230m2n3F/download/Image%202017-01-21%20at%2012.39.51%20pm.png)
