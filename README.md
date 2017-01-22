@@ -1,5 +1,6 @@
 # Scurry-Challenge
-[![Build Status](https://travis-ci.org/josecolella/Scurry-Challenge.svg?branch=master)](https://travis-ci.org/josecolella/Scurry-Challenge)
+[![Build Status](https://travis-ci.org/josecolella/Scurri-Challenge.svg?branch=master)](https://travis-ci.org/josecolella/Scurri-Challenge)
+
 
 
 ##Challenge 1: A bright spot
@@ -48,20 +49,22 @@ Here is an illustration of the solution that I have implemented in Python.
 Here are the steps to the solution:
 
 - Start from a set that contains the range of numbers from 1 to 100
-- Create four different subsets [Filter]
-    - A set that contains only numbers that are divisible by both 5 and 3 **Set MultipleBoth**
-    - A set that contains only numbers that are divisible by 3 and not included in the previous set **Set MultipleThree**
-    - A set that contains only numbers that are divisble by 5 and not included in the previous two sets **Set MultipleFive**
-    - A remaining set which is the set difference between the set with all numbers and the previous three sets **Set Remaining**
+- Create two different subsets [Filter]
+    - A set that contains only numbers that are divisible by 3 **Set MultipleThree**
+    - A set that contains only numbers that are divisble by 5 **Set MultipleFive**  
+    - A set that takes the set difference between all numbers and the set divisible by 3 and the set divisible by 5
+    - A set that is the intersection between **Set MultipleThree** and **Set MultipleFive**, resulting in a set that
+    has the numbers that are multiple of 3 and 5 **Set MultipleBoth**
+- Create restricted set for multiple of three and for the set of multiple of 5
+    - A set that is the set difference between **Set MultipleThree** and **Set MultipleBoth**
+    - A set that is the set difference between **Set MultipleFive** and **Set MultipleBoth**.
 - Map a function for each of these sets to create tuple pair (int, str) with the conditions placed
     - For **Set MultipleBoth** the set is *{(15,'ThreeFive'),...}*
     - For **Set MultipleThree** the set is *{(3,'Three'),...}*
     - For **Set MultipleFive** the set is *{(5, 'Five'),...}*
     - For **Set Remaining** the set is *{(1, ''), ...}*
-- These sets are joined and sorted on the int parameter.
+- These sets are chained and sorted on the int parameter.
 - The result is cleaned so that only integers and string are left in the data structure.
-
-![Solution Image](https://cl.ly/1q3c230m2n3F/download/Image%202017-01-21%20at%2012.39.51%20pm.png)
 
 The implementation can be found in the `solution.py` file. I have decided to utilize iterators for returning the result,
 allowing for efficiency in memory and speed for large ranges, and if the user wants the fizz_buzz result for a specific
