@@ -75,14 +75,25 @@ integer, the function will return an iterator with just that result.
 
 Run the main.py see the result of the implementation.
 
+```sh
+git clone https://github.com/josecolella/Scurri-Challenge
+cd Scurri-Challenge
+python3 main.py
+```
+
+The main.py outputs the result of the fizz_buzz for each number from 1 to 100.
+
 ```python
+from __future__ import print_function
 import solution
 
-beginning_index = 1
-ending_index = 100
-results = solution.fizz_buzz(beginning_index, ending_index)
-for result in results:
-    print(result)
+
+if __name__ == '__main__':
+    beginning_index = 1
+    ending_index = 100
+    results = solution.fizz_buzz(beginning_index, ending_index)
+    for result in results:
+        print(result)
 ```
 
 
