@@ -66,6 +66,8 @@ Here are the steps to the solution:
 - These sets are chained and sorted on the int parameter.
 - The result is cleaned so that only integers and string are left in the data structure.
 
+![Implementation Details](https://cl.ly/1T0E3m1m0A1C/download/Screen%20Shot%202017-01-22%20at%2019.17.17.png)
+
 The implementation can be found in the `solution.py` file. I have decided to utilize iterators for returning the result,
 allowing for efficiency in memory and speed for large ranges, and if the user wants the fizz_buzz result for a specific
 integer, the function will return an iterator with just that result.
