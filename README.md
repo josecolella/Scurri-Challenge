@@ -62,3 +62,44 @@ Here are the steps to the solution:
 - The result is cleaned so that only integers and string are left in the data structure.
 
 ![Solution Image](https://cl.ly/1q3c230m2n3F/download/Image%202017-01-21%20at%2012.39.51%20pm.png)
+
+The implementation can be found in the `solution.py` file. I have decided to utilize iterators for returning the result,
+allowing for efficiency in memory and speed for large ranges, and if the user wants the fizz_buzz result for a specific
+integer, the function will return an iterator with just that result.
+
+###Requirements
+
+- Python 3.6 # Program utilizes new typing module for type hinting
+
+###Usage:
+
+Run the main.py see the result of the implementation.
+
+```python
+import solution
+
+beginning_index = 1
+ending_index = 100
+results = solution.fizz_buzz(beginning_index, ending_index)
+for result in results:
+    print(result)
+```
+
+
+###Tests
+
+To run tests execute the following
+
+```sh
+git clone https://github.com/josecolella/Scurri-Challenge
+python3 tests.py -v
+```
+
+##Challenge 3: UK Postcodes
+
+For this challenge, I decided to create a separate ![repo](https://github.com/josecolella/postcode_uk).
+The ![README](https://github.com/josecolella/postcode_uk) contains information on the API offered by the library
+
+![Tests](https://github.com/josecolella/postcode_uk/blob/master/tests/unit/tests.py) are also present for this library.
+
+
