@@ -54,10 +54,9 @@ def fizz_buzz(beginning_number: int = 1, ending_number: int = 100, key: int=None
     # Create set with range from `beginning_number` to `ending_number`
     # inclusive
     all_numbers = set(range(beginning_number, ending_number + 1))
-    # Create three buckets; 1. Multiple of 3 and 5. 2. Multiple of 3. 3.
-    # Multiple of 5
-    multiple_three = set(filter(lambda x: x % 3 == 0, all_numbers))
-    multiple_five = set(filter(lambda x: x % 5 == 0, all_numbers))
+    # Create two sets; 1. Multiple of 3. 2. Multiple of 5
+    multiple_three = set((number for number in all_numbers if number % 3 == 0))
+    multiple_five = set((number for number in all_numbers if number % 5 == 0))
 
     # Create a set with the remaining numbers that do not fullfill the
     # conditions
@@ -71,23 +70,31 @@ def fizz_buzz(beginning_number: int = 1, ending_number: int = 100, key: int=None
     multiple_five_restrict = multiple_five.difference(multiple_both)
 
     # Create transformations for printing
-    transform_remaining_numbers = map(lambda x: (x, ''), remaining_numbers)
-    transform_multiple_both = map(lambda x: (x, 'ThreeFive'), multiple_both)
-    transform_multiple_five = map(lambda x: (x, 'Five'), multiple_five_restrict)
-    transform_multiple_three = map(lambda x: (x, 'Three'), multiple_three_restrict)
+    transform_remaining_numbers = ((number, '')
+                                   for number in remaining_numbers)
+    transform_multiple_both = ((number, 'ThreeFive')
+                               for number in multiple_both)
+    transform_multiple_five = ((number, 'Five')
+                               for number in multiple_five_restrict)
+    transform_multiple_three = ((number, 'Three')
+                                for number in multiple_three_restrict)
 
-    # Create sorted list, that is sorted based on the first index: integer
+    # Create sorted list, that is sorted based on the integer
     transformed_result_list = sorted(
         itertools.chain(transform_remaining_numbers,
                         transform_multiple_both,
                         transform_multiple_five,
                         transform_multiple_three
                         ), key=lambda x: x[0])
-    # Create clean result list
-    clean_result_tuple = lambda result_tuple: result_tuple[0] if result_tuple[1] is '' else result_tuple[1]
-    result_list = (clean_result_tuple(trans_tuple)
+
+
+    # Helper function to return integer is string in tuple is ''
+    def clean_result_tuple(result_tuple):
+        return result_tuple[0] if result_tuple[1] is '' else result_tuple[1]
+    # Create clean result generator
+    result_generator = (clean_result_tuple(trans_tuple)
                    for trans_tuple in transformed_result_list)
     if key is not None:
-        result_list = itertools.islice(result_list, key - 1, key)
+        result_generator = itertools.islice(result_generator, key - 1, key)
 
-    return result_list
+    return result_generator
