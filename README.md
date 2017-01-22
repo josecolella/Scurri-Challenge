@@ -97,9 +97,9 @@ python3 tests.py -v
 
 ##Challenge 3: UK Postcodes
 
-For this challenge, I decided to create a separate ![repo](https://github.com/josecolella/postcode_uk).
-The ![README](https://github.com/josecolella/postcode_uk) contains information on the API offered by the library
+For this challenge, I decided to create a separate [repo](https://github.com/josecolella/postcode_uk).
+The [README](https://github.com/josecolella/postcode_uk) contains information on the API offered by the library
 
-![Tests](https://github.com/josecolella/postcode_uk/blob/master/tests/unit/tests.py) are also present for this library.
+[Tests](https://github.com/josecolella/postcode_uk/blob/master/tests/unit/tests.py) are also present for this library.
 
 
