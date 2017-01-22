@@ -1,4 +1,4 @@
-# Scurry-Challenge
+# Scurri-Challenge
 [![Build Status](https://travis-ci.org/josecolella/Scurri-Challenge.svg?branch=master)](https://travis-ci.org/josecolella/Scurri-Challenge)
 
 
