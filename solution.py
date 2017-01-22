@@ -56,31 +56,33 @@ def fizz_buzz(beginning_number: int = 1, ending_number: int = 100, key: int=None
     all_numbers = set(range(beginning_number, ending_number + 1))
     # Create three buckets; 1. Multiple of 3 and 5. 2. Multiple of 3. 3.
     # Multiple of 5
-    multiple_both = set(filter(lambda x: x % 3 == 0 and x %
-                               5 == 0, all_numbers))
-    multiple_three = set(filter(lambda x: x %
-                                3 == 0 and x not in multiple_both, all_numbers))
-    multiple_five = set(filter(
-        lambda x: x % 5 == 0 and x not in multiple_both and x not in multiple_three, all_numbers))
+    multiple_three = set(filter(lambda x: x % 3 == 0, all_numbers))
+    multiple_five = set(filter(lambda x: x % 5 == 0, all_numbers))
 
     # Create a set with the remaining numbers that do not fullfill the
     # conditions
-    remaining_numbers = all_numbers.difference(
-        itertools.chain(multiple_both, multiple_three, multiple_five)
-    )
+    remaining_numbers = all_numbers.difference(multiple_three, multiple_five)
+    # Set that is interesection of numbers that are multiple of 3 and multiple
+    # of 5
+    multiple_both = multiple_three.intersection(multiple_five)
+    # Set that contains multiples of three that are not also multiples of 5
+    multiple_three_restrict = multiple_three.difference(multiple_both)
+    # Set that contains multiples of five that are not also multiples of 3
+    multiple_five_restrict = multiple_five.difference(multiple_both)
 
     # Create transformations for printing
     transform_remaining_numbers = map(lambda x: (x, ''), remaining_numbers)
     transform_multiple_both = map(lambda x: (x, 'ThreeFive'), multiple_both)
-    transform_multiple_five = map(lambda x: (x, 'Five'), multiple_five)
-    transform_multiple_three = map(lambda x: (x, 'Three'), multiple_three)
+    transform_multiple_five = map(lambda x: (x, 'Five'), multiple_five_restrict)
+    transform_multiple_three = map(lambda x: (x, 'Three'), multiple_three_restrict)
 
     # Create sorted list, that is sorted based on the first index: integer
-    transformed_result_list = sorted(itertools.chain(transform_remaining_numbers,
-                                                     transform_multiple_both,
-                                                     transform_multiple_five,
-                                                     transform_multiple_three
-                                                     ), key=lambda x: x[0])
+    transformed_result_list = sorted(
+        itertools.chain(transform_remaining_numbers,
+                        transform_multiple_both,
+                        transform_multiple_five,
+                        transform_multiple_three
+                        ), key=lambda x: x[0])
     # Create clean result list
     clean_result_tuple = lambda result_tuple: result_tuple[0] if result_tuple[1] is '' else result_tuple[1]
     result_list = (clean_result_tuple(trans_tuple)
